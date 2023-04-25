@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div >
         <h1>我是Home</h1>
         <el-row>
             <el-button>默认按钮</el-button>

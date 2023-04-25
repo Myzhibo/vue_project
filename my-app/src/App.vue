@@ -1,26 +1,25 @@
 <template>
   <div id="app">
-      <router-link to="/home">home</router-link>  <br>
-      <router-link to="/user">user</router-link>
-      <router-view></router-view>
-  </div>
+      <router-view></router-view>   <!-- 当前组件下的路由展示区 -->
+  </div> 
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
-export default {
-  name: 'App',
-  data(){
-    return {
-        a:1
-    }
-  },
-  components: {
-    HelloWorld,
+  export default {
+    name: 'App',
+    data(){
+      return {
+      }
+    },
   }
-}
 </script>
 
-<style>
+<style lang="less">
+  html,body,h3{       /*修改标签默认样式*/
+    margin: 0;
+    padding: 0;
+  };
+  html{
+    background-color: rgb(243,243,243);
+  }
 </style>
