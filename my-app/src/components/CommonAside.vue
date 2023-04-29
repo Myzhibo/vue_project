@@ -8,12 +8,12 @@
             class="el-menu-vertical-demo"
             @open="handleOpen" 
             @close="handleClose" 
-            :collapse="isCollapse"
+            :collapse="isCollapse"      
             background-color="rgb(12,51,87)"         
             text-color="white"
             active-text-color="cornflowerblue"
-        >    
-            <h3>后台管理系统</h3>
+        >                                         
+            <h3>{{isCollapse ? '后台' : '后台管理系统'}}</h3>
             <el-menu-item v-for="item in noChildren" :key="item.name" :index="item.name" @click="clickMenu(item)">
                     <i :class="`el-icon-${item.icon}`"></i>
                     <span slot="title">{{ item.label }}</span>
@@ -39,7 +39,6 @@
         name: 'CommonAside',
         data() {
             return {
-                isCollapse: false,
                 menuData: [
                     {
                         path: '/',
@@ -111,7 +110,12 @@
             //有子菜单
             hasChildren(){
                 return this.menuData.filter(item => item.children )
-            }
+            },
+            //通过计算属性，使用vuex的state数据
+            isCollapse(){        //  :collapse="isCollapse"   控制展开、收起
+                return this.$store.state.tab.isCollapse
+            }   
+
         }
     }
 </script>
@@ -122,6 +126,7 @@
         min-height: 400px;
     }
     .el-menu{
+        border-right: none;
         height: 100vh;   /* 占满页面 */
         h3 {
             color: white;

@@ -9,9 +9,12 @@ Vue.use(ElementUI)                                //使用ElementUi插件
 
 import VueRouter from 'vue-router'              //引入路由组件库
 import router from './router/index'             //引入路由配置index
-Vue.use(VueRouter)                                //使用ElementUi插件
+Vue.use(VueRouter)                                //使用VueRouter插件
+
+import store from './store'                     //引入vuex配置index
 
 new Vue({
   render: h => h(App),
   router,                                       //挂载路由
+  store                                         //挂载vuex
 }).$mount('#app')

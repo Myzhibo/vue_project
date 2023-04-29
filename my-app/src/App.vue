@@ -15,7 +15,7 @@
 </script>
 
 <style lang="less">
-  html,body,h3{       /*修改标签默认样式*/
+  html,body,h3,p{       /*修改标签默认样式*/
     margin: 0;
     padding: 0;
   };

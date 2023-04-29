@@ -1,7 +1,7 @@
 <template>
     <div class="header-container">
         <div class="l-content">
-            <el-button icon="el-icon-menu" size="mii"></el-button>
+            <el-button @click="handleMunu" icon="el-icon-menu" size="mii"></el-button>
             <!-- 面包屑 -->
             <span class="text">首页</span> 
         </div>
@@ -22,7 +22,16 @@
 
 <script>
     export default {
-        name: 'CommonHeader'
+        name: 'CommonHeader',
+        data() {
+            return {}
+        },
+        methods:{
+            handleMunu(){
+                // this.$store.commit('collapseMenu')  //未开启命名空间
+                this.$store.commit('tab/collapseMenu')  //开启命名空间
+            }
+        }
     }
 </script>
 
@@ -32,9 +41,9 @@
         background-color: white; 
         box-shadow: 2px 2px 5px rgb(202, 201, 201);
         height: 60px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        display: flex;                       /* 弹性布局 */
+        justify-content: space-between;      /* 内容两端对齐 */   
+        align-items: center;                 /* 垂直居中 */
         .text{
             // color: #fff;
             font-size: 14px;
