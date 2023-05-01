@@ -91,7 +91,7 @@
             handleClose(key, keyPath) {
                 console.log(key, keyPath);
             },
-            clickMenu(item){
+            clickMenu(item){         //切换路由
                 // console.log(item);
                 // console.log(this.$route)  //当前页面路由
                 // console.log(this.$router)  //全局路由器
@@ -100,6 +100,9 @@
                         path: item.path         /*  /xxx  */
                     })
                 }
+                //面包屑功能
+                this.$store.commit('tab/selectMenu',item)
+
             },
         },
         computed: {

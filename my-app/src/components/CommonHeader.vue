@@ -1,9 +1,12 @@
 <template>
     <div class="header-container">
         <div class="l-content">
-            <el-button @click="handleMunu" icon="el-icon-menu" size="mii"></el-button>
+            <el-button @click="handleMunu" icon="el-icon-menu" size="mii" style="margin-right: 20px;"></el-button>
             <!-- 面包屑 -->
-            <span class="text">首页</span> 
+            <!-- <span class="text">首页</span>  -->
+            <el-breadcrumb separator="/">
+                <el-breadcrumb-item v-for="i in tabsList" :key="i.path" :to="{ path: i.path }">{{ i.label }}</el-breadcrumb-item>
+            </el-breadcrumb>
         </div>
         <div class="r-content">
             <el-dropdown>
@@ -21,6 +24,8 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex'
+
     export default {
         name: 'CommonHeader',
         data() {
@@ -31,7 +36,15 @@
                 // this.$store.commit('collapseMenu')  //未开启命名空间
                 this.$store.commit('tab/collapseMenu')  //开启命名空间
             }
-        }
+        },
+        computed:{
+            // ...mapState({
+            //     tags: state => state.tab.tabsList
+            // })
+                  
+            ...mapState('tab',['tabsList']),
+            // ...mapState('personOption', ['personList']), 
+        },
     }
 </script>
 
@@ -54,6 +67,24 @@
                 width: 40px;
                 height: 40px;
                 border-radius: 50%;
+            }
+        }
+        .l-content{
+            display: flex;
+            align-items: center;
+            /deep/.el-breadcrumb__item{
+                .el-breadcrumb__inner{
+                    font-weight: normal;
+                    &.is-link{
+                        color: #666;
+                    }
+                }
+                &:last-child{
+                    .el-breadcrumb__inner{
+                        color: black;
+                        font-weight: 600;
+                    }
+                }
             }
         }
     }
