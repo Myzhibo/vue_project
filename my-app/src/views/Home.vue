@@ -104,7 +104,8 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:8081/api/tableData').then(  //这个端口号(8081)取决于web运行在哪个端口下
+          //axios.get('http://localhost:8081/api/tableData').then(  //这个端口号(8081)取决于web运行在哪个端口下
+            axios.get('api/tableData').then(                         //可以不写端口号
                     response => {
                         console.log('tableData-success! ', response.data);
                         this.tableData = response.data
@@ -135,7 +136,7 @@
                                 this.NoServer = true     //打开服务器未连接的提示
                     }
             )
-            axios.get('api/countData').then(                        //可以不写端口号
+            axios.get('api/countData').then(                        
                     response => {
                         console.log('countData-success! ', response.data);
                         this.countData = response.data
@@ -174,7 +175,7 @@
                             this.NoServer = true     //打开服务器未连接的提示
                 }
             )
-            axios.get('api/barData').then(                        //可以不写端口号
+            axios.get('api/barData').then(                       
                     response => {
                         console.log('barData-success! ', response.data);
                     
