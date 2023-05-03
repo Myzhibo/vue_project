@@ -1,6 +1,8 @@
 # my-app(vue2 + ElementUI + less + vuex + axios + echarts)
-# 使用【Myzhibo/vue_projectServer】repo下的服务器提供数据
-
+-    使用【Myzhibo/vue_projectServer】repo下的服务器提供数据
+-    服务器设置项目login接口，
+     -    账号:admin ,密码: 123         //超级管理员
+     -    账号:miniadm ,密码: 123       //mini管理员
 
 ## 1. 项目准备
 ### (1). 用到的vscode插件 + 插件库及工具
@@ -78,3 +80,14 @@
      -    onSearch: _.debounce(function (e)  {
                 console.log(e);
           }, 500)
+
+## 4. 权限管理
+### (1). 登录界面
+-    安装cookie ： npm i js-cookie@3.0.1
+-    点击登陆后通过Mock随机生成token存入cookie中，之后页面跳转中通过token判断用户是否为登陆状态
+-    配置全局路由守卫进行权限管理
+### (2). 退出登录
+-    右上角退出登录，删除cookie中的token和路由信息menu，跳回登录界面路由
+### (3). 动态路由，菜单权限(不同账号显示不同路由菜单)
+-    通过login接口获取当前账号路由数据，使用vuex将数据传入CommonAside组件中以进行展示。
+

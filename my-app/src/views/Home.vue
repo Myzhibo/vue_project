@@ -10,7 +10,7 @@
                     <div class="user">
                         <img src="../assets/imgggg.jpg" alt="user">
                         <div class="user-info">
-                            <p class="name">Admin</p>
+                            <p class="name">{{ username }}</p>
                             <p class="access">超级管理员</p>
                         </div>
                     </div>
@@ -227,6 +227,12 @@
             )
 
         },
+        computed:{
+            username(){
+                return JSON.parse(localStorage.getItem('info')).username
+            }
+        },
+        
     }
 </script>
 

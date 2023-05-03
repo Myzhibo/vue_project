@@ -9,14 +9,14 @@
             </el-breadcrumb>
         </div>
         <div class="r-content">
-            <el-dropdown>
+            <el-dropdown @command="handleClick">
                 <span class="el-dropdown-link">
                     <img class="user" src="../assets/imgggg.jpg" alt="user">
                     <i class="el-icon-arrow-down el-icon--right"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item>个人中心</el-dropdown-item>
-                    <el-dropdown-item>退出</el-dropdown-item>
+                    <el-dropdown-item command="logout">退出</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
         </div>
@@ -25,6 +25,7 @@
 
 <script>
     import {mapState} from 'vuex'
+    import  Cookie from 'js-cookie';
 
     export default {
         name: 'CommonHeader',
@@ -35,7 +36,17 @@
             handleMunu(){
                 // this.$store.commit('collapseMenu')  //未开启命名空间
                 this.$store.commit('tab/collapseMenu')  //开启命名空间
+            },
+            handleClick(command){
+                if(command === "logout"){
+                    //清除cookie中的token、menu
+                    Cookie.remove('token')
+                    Cookie.remove('menu')
+                    //跳回登录界面
+                    this.$router.push('/login')
+                }
             }
+            
         },
         computed:{
             // ...mapState({

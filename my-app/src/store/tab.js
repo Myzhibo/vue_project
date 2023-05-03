@@ -1,3 +1,5 @@
+import Cookie from 'js-cookie'
+
 //管理菜单数据
 export default{
     namespaced: true,   //开启命名空间
@@ -11,7 +13,8 @@ export default{
                 icon: 's-home',
                 url: 'Home/Home'
             }
-        ]
+        ],
+        menu: []
     },
     actions:{},
     mutations:{
@@ -36,7 +39,14 @@ export default{
             // console.log(item)
             const index = state.tabsList.findIndex(val => val.name === item.name)
             state.tabsList.splice(index,1)            
-        }
+        },
+        
+        //动态获取路由(登录接口传回该用户可见的路由)
+        setMenu(state,value){
+            state.menu = value
+            Cookie.set('menu',JSON.stringify(value))
+        },
+
 
     }
 
